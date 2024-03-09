@@ -27,7 +27,7 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - echo Logging in to Amazon EKS...
-      - aws eks --region us-east-1 update-kubeconfig cluster-for-Lab
+      - aws eks --region us-east-1 update-kubeconfig --name cluster-for-Lab
       - echo check config 
       - kubectl config view --minify
       - echo check kubectl access
