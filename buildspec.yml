@@ -45,7 +45,8 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file..
       - echo Push the latest image to cluster
-      - ls -al ~/.kube
-      - cat ~/.kube/config
+      - aws configure set aws_access_key_id AKIA5JJ7W63PPY2ZC3Q5
+      - aws configure set aws_secret_access_key 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
+      - aws configure set default.region us-east-1
       - kubectl apply -f deployment.yaml
 
