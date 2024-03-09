@@ -47,6 +47,6 @@ phases:
       - echo Push the latest image to cluster
       - ls -al ~/.kube
       - cat ~/.kube/config
-      - export KUBECONFIG= ~/.kube/config
+      - export KUBECONFIG= $CODEBUILD_SRC_DIR/.kube/config
       - kubectl apply -f deployment.yaml
 
