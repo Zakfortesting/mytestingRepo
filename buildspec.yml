@@ -27,7 +27,7 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - echo Logging in to Amazon EKS...
-      - aws eks --region us-east-1 update-kubeconfig --name cluster-for-Lab
+      - aws eks --region us-east-1 update-kubeconfig --name cluster-for-Lab --role-arn arn:aws:iam::913351046878:role/eksctl-cluster-for-Lab-cluster-ServiceRole-41J7BHbn7WYB
       - echo check config 
       - kubectl config view --minify
       - echo check kubectl access
@@ -45,8 +45,5 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file..
       - echo Push the latest image to cluster
-      - aws configure set aws_access_key_id AKIA5JJ7W63PPY2ZC3Q5
-      - aws configure set aws_secret_access_key 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
-      - aws configure set default.region us-east-1
       - kubectl apply -f deployment.yaml
 
