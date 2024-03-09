@@ -27,7 +27,7 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - echo Logging in to Amazon EKS...
-      - aws eks --region us-east-1 update-kubeconfig --name cluster-for-Lab
+      - aws eks --region us-east-1 update-kubeconfig --name arn:aws:eks:us-east-1:913351046878:cluster/cluster-for-Lab
       - echo check config 
       - kubectl config view --minify
       - echo check kubectl access
@@ -47,4 +47,5 @@ phases:
       - echo Push the latest image to cluster
       - ls -al ~/.kube
       - cat ~/.kube/config
+      - kubectl apply -f deployment.yaml
 
