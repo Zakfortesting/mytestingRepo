@@ -44,6 +44,7 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file..
-       - echo Push the latest image to cluster
-      - kubectl apply -f deployment.yaml
-      - kubectl rollout restart -f deployment.yaml
+      - echo Push the latest image to cluster
+      - ls -al ~/.kube
+      - cat ~/.kube/config
+
