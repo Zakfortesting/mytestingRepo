@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: 913351046878.dkr.ecr.us-east-1.amazonaws.com/testing-project1-for-technical:latest
+    ports:
+    - containerPort: 80
