@@ -6,7 +6,6 @@
 # * AWS CLI
 
 =======
->>>>>>> 4d4fa92 (MyfinalProject)
 set -e
 
 mkdir -p $HOME/bin
