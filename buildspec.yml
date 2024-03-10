@@ -19,15 +19,14 @@ phases:
       #- $(aws ecr get-login --region ap-south-1 --no-include-email)
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 913351046878.dkr.ecr.us-east-1.amazonaws.com
       - # Replace with this to your repository URI
-      - REPOSITORY_URI=913351046878.dkr.ecr.us-east-1.amazonaws.com/testing-project1-for-technical
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
-      - CREDENTIALS=$(aws sts assume-role --role-arn arn:aws:iam::913351046878:role/service-role/mytestingRepo-role --role-session-name codebuild-kubectl --duration-seconds 900)
+      - CREDENTIALS=$(aws sts assume-role --role-arn $EKS_KUBECTL_ROLE_ARN --role-session-name codebuild-kubectl --duration-seconds 900)
       - export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
       - export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - echo Logging in to Amazon EKS...
-      - aws eks --region us-east-1 update-kubeconfig --name cluster-for-Lab --role-arn arn:aws:iam::913351046878:role/eksctl-cluster-for-Lab-cluster-ServiceRole-41J7BHbn7WYB
+      - aws eks --region us-east-1 update-kubeconfig --name MyCluster-Devel 
       - echo check config 
       - kubectl config view --minify
       - echo check kubectl access
@@ -45,5 +44,5 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file..
       - echo Push the latest image to cluster
-      - kubectl apply -f deployment.yaml
+      - kubectl get service
 
