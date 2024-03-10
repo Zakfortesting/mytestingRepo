@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/env bash
 
 # This script will install EKS prerequisites on Amazon Linux or Amazon Linux 2
