@@ -45,4 +45,7 @@ phases:
       - echo Writing image definitions file..
       - echo Push the latest image to cluster
       - kubectl get service
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d4fa92 (MyfinalProject)

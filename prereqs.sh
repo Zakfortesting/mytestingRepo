@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env bash
 
 # This script will install EKS prerequisites on Amazon Linux or Amazon Linux 2
@@ -5,6 +6,8 @@
 # * aws-iam-authenticator
 # * AWS CLI
 
+=======
+>>>>>>> 4d4fa92 (MyfinalProject)
 set -e
 
 mkdir -p $HOME/bin
