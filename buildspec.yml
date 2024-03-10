@@ -45,7 +45,7 @@ phases:
       - echo Writing image definitions file..
       
       - echo Scanning the Docker image for vulnerabilities...
-      - aws ecr start-image-scan --repository-name "$REPOSITORY_NAME" --image-id imageTag=latest
+      - aws ecr start-image-scan --repository-name testing-project1-for-technical --image-id imageTag=latest
       - scan_result=$(aws ecr describe-image-scan-findings --repository-name "$REPOSITORY_NAME" --image-id imageTag=latest --output json)
       - echo "$scan_result"
       - high_severity=$(echo "$scan_result" | jq -r '.imageScanFindings.findingSeverityCounts.HIGH')
