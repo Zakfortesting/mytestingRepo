@@ -45,4 +45,4 @@ phases:
       - echo Writing image definitions file..
       - echo Push the latest image to cluster
       - kubectl get service
-      - kubectl apply kubernetes/deployment.yaml    
+      - kubectl apply -f kubernetes/deployment.yaml    
