@@ -45,8 +45,6 @@ phases:
       - echo Writing image definitions file..
       - echo Push the latest image to cluster
       - kubectl get service
-    deploy:
-    commands:
       - kubectl apply -f kubernetes/serviceaccountEPS.yaml
       - kubectl apply -f kubernetes/secretEPS.yaml
       - kubectl apply -f kubernetes/roleEPS.yaml
